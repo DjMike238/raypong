@@ -25,15 +25,18 @@ func main() {
 		rl.ClearBackground(rl.Black)
 
 		rl.DrawRectangleLinesEx(frame, 8, rl.LightGray)
-		rl.DrawRectangleRec(rl.Rectangle(leftPaddle), rl.LightGray)
-		rl.DrawRectangleRec(rl.Rectangle(rightPaddle), rl.LightGray)
 		rl.EndDrawing()
 
 		if gameStarted {
 			movePaddle()
+
+			rl.DrawRectangleRec(rl.Rectangle(leftPaddle), rl.LightGray)
+			rl.DrawRectangleRec(rl.Rectangle(rightPaddle), rl.LightGray)
 			rl.DrawRectangleRec(rl.Rectangle(ball), rl.LightGray)
+
 		} else if rl.IsKeyPressed(rl.KeyEnter) {
 			gameStarted = true
+
 		} else {
 			drawText()
 		}
