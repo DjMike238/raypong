@@ -41,7 +41,7 @@ func main() {
 
 			rl.DrawRectangleRec(rl.Rectangle(leftPaddle), rl.LightGray)
 			rl.DrawRectangleRec(rl.Rectangle(rightPaddle), rl.LightGray)
-			rl.DrawRectangleRec(rl.Rectangle(ball), rl.LightGray)
+			rl.DrawRectangleRec(ball, rl.LightGray)
 
 		} else if rl.IsKeyPressed(rl.KeyEnter) {
 			gameStarted = true
