@@ -3,8 +3,8 @@ package main
 import rl "github.com/gen2brain/raylib-go/raylib"
 
 const (
-	LIMIT_TOP_Y    = 20
-	LIMIT_BOTTOM_Y = 366
+	LIMIT_TOP_Y    = FRAME_BORDER_SIZE*2 + FRAME_SPACING
+	LIMIT_BOTTOM_Y = WINDOW_SIZE_Y - PADDLE_HEIGHT - LIMIT_TOP_Y
 
 	CENTER_Y = 192
 
