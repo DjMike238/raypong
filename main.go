@@ -56,15 +56,15 @@ func main() {
 	rl.CloseWindow()
 }
 
+func drawText() {
+	x := WINDOW_SIZE_X/2 - rl.MeasureText(WELCOME_TEXT, FONT_SIZE)/2
+	rl.DrawText(WELCOME_TEXT, x, 200, FONT_SIZE, rl.LightGray)
+}
+
 func movePaddle() {
 	if rl.IsKeyDown(rl.KeyDown) || rl.IsKeyDown(rl.KeyS) {
 		leftPaddle.move(MOVEMENT_SPEED)
 	} else if rl.IsKeyDown(rl.KeyUp) || rl.IsKeyDown(rl.KeyW) {
 		leftPaddle.move(-MOVEMENT_SPEED)
 	}
-}
-
-func drawText() {
-	x := WINDOW_SIZE_X/2 - rl.MeasureText(WELCOME_TEXT, FONT_SIZE)/2
-	rl.DrawText(WELCOME_TEXT, x, 200, FONT_SIZE, rl.LightGray)
 }
