@@ -25,7 +25,6 @@ func main() {
 		rl.ClearBackground(rl.Black)
 
 		rl.DrawRectangleLinesEx(frame, 8, rl.LightGray)
-		rl.EndDrawing()
 
 		if gameStarted {
 			movePaddle()
@@ -40,6 +39,8 @@ func main() {
 		} else {
 			drawText()
 		}
+
+		rl.EndDrawing()
 	}
 
 	rl.CloseWindow()
