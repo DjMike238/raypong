@@ -15,7 +15,7 @@ var (
 )
 
 func main() {
-	rl.InitWindow(WINDOW_SIZE_X, WINDOW_SIZE_Y, "RayPong by Dj_Mike238")
+	rl.InitWindow(WINDOW_SIZE_X, WINDOW_SIZE_Y, "RayPong by Dj_Mike238 - ESC to exit")
 
 	rl.SetTargetFPS(60)
 
