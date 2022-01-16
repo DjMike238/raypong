@@ -65,7 +65,7 @@ func main() {
 			gameStarted = true
 
 		} else {
-			drawText()
+			drawWelcomeText()
 		}
 
 		rl.EndDrawing()
@@ -74,7 +74,7 @@ func main() {
 	rl.CloseWindow()
 }
 
-func drawText() {
+func drawWelcomeText() {
 	x := WINDOW_SIZE_X/2 - rl.MeasureText(WELCOME_TEXT, FONT_SIZE)/2
 	rl.DrawText(WELCOME_TEXT, x, 200, FONT_SIZE, rl.LightGray)
 }
