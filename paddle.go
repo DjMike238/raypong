@@ -39,13 +39,14 @@ var (
 	}
 )
 
-func limitsOk(y, delta float32) bool {
-	newY := y + delta
-	return newY <= LIMIT_BOTTOM_Y && newY >= LIMIT_TOP_Y
+func limitsOk(y float32) bool {
+	return y <= LIMIT_BOTTOM_Y && y >= LIMIT_TOP_Y
 }
 
 func (p *Paddle) move(delta float32) {
-	if limitsOk(p.Y, delta) {
-		p.Y += delta
+	newY := p.Y + delta
+
+	if limitsOk(newY) {
+		p.Y = newY
 	}
 }
