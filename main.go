@@ -10,6 +10,10 @@ const (
 	FONT_SIZE    = 20
 )
 
+var (
+	gameStarted bool
+)
+
 func main() {
 	rl.InitWindow(WINDOW_X, WINDOW_Y, "RayPong by Dj_Mike238")
 
@@ -25,7 +29,13 @@ func main() {
 		rl.DrawRectangleRec(rl.Rectangle(rightPaddle), rl.LightGray)
 		rl.EndDrawing()
 
-		movePaddle()
+		if gameStarted {
+			movePaddle()
+		} else if rl.IsKeyPressed(rl.KeyEnter) {
+			gameStarted = true
+		} else {
+			drawText()
+		}
 	}
 
 	rl.CloseWindow()
