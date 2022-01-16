@@ -20,11 +20,11 @@ var (
 		Width:  WINDOW_SIZE_X - FRAME_SPACING*2,
 		Height: WINDOW_SIZE_Y - FRAME_SPACING*2,
 	}
-
-	gameStarted bool
 )
 
 func main() {
+	var gameStarted bool
+
 	rl.InitWindow(WINDOW_SIZE_X, WINDOW_SIZE_Y, "RayPong by Dj_Mike238 - ESC to exit")
 
 	rl.SetTargetFPS(60)
