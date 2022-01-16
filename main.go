@@ -6,8 +6,8 @@ const (
 	WINDOW_SIZE_X = 800
 	WINDOW_SIZE_Y = 450
 
-	WELCOME_TEXT = " Welcome to RayPong!\nPress ENTER to begin."
-	FONT_SIZE    = 20
+	WELCOME_TEXT      = " Welcome to RayPong!\nPress ENTER to begin."
+	WELCOME_FONT_SIZE = 20
 
 	BORDER_SIZE    = 8
 	BORDER_SPACING = 4
@@ -75,8 +75,8 @@ func main() {
 }
 
 func drawWelcomeText() {
-	x := WINDOW_SIZE_X/2 - rl.MeasureText(WELCOME_TEXT, FONT_SIZE)/2
-	rl.DrawText(WELCOME_TEXT, x, 200, FONT_SIZE, rl.LightGray)
+	x := WINDOW_SIZE_X/2 - rl.MeasureText(WELCOME_TEXT, WELCOME_FONT_SIZE)/2
+	rl.DrawText(WELCOME_TEXT, x, 200, WELCOME_FONT_SIZE, rl.LightGray)
 }
 
 func movePaddle() {
