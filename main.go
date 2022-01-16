@@ -51,7 +51,7 @@ func main() {
 
 		rl.ClearBackground(rl.Black)
 
-		rl.DrawRectangleLinesEx(frame, FRAME_BORDER_SIZE, rl.LightGray)
+		rl.DrawRectangleLinesEx(frame, FRAME_BORDER_SIZE, veryDarkGray)
 
 		if gameStarted {
 			movePaddle()
