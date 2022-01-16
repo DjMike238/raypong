@@ -57,9 +57,9 @@ func main() {
 }
 
 func movePaddle() {
-	if rl.IsKeyDown(rl.KeyDown) {
+	if rl.IsKeyDown(rl.KeyDown) || rl.IsKeyDown(rl.KeyS) {
 		leftPaddle.move(MOVEMENT_SPEED)
-	} else if rl.IsKeyDown(rl.KeyUp) {
+	} else if rl.IsKeyDown(rl.KeyUp) || rl.IsKeyDown(rl.KeyW) {
 		leftPaddle.move(-MOVEMENT_SPEED)
 	}
 }
