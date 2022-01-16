@@ -9,25 +9,25 @@ const (
 	WELCOME_TEXT = " Welcome to RayPong!\nPress ENTER to begin."
 	FONT_SIZE    = 20
 
-	FRAME_BORDER_SIZE = 8
-	FRAME_SPACING     = 4
+	BORDER_SIZE    = 8
+	BORDER_SPACING = 4
 )
 
 var (
-	frame = rl.Rectangle{
-		X:      FRAME_SPACING,
-		Y:      FRAME_SPACING,
-		Width:  WINDOW_SIZE_X - FRAME_SPACING*2,
-		Height: WINDOW_SIZE_Y - FRAME_SPACING*2,
+	border = rl.Rectangle{
+		X:      BORDER_SPACING,
+		Y:      BORDER_SPACING,
+		Width:  WINDOW_SIZE_X - BORDER_SPACING*2,
+		Height: WINDOW_SIZE_Y - BORDER_SPACING*2,
 	}
 
 	lineStart = rl.Vector2{
-		X: WINDOW_SIZE_X/2 - FRAME_BORDER_SIZE/2 + FRAME_SPACING,
+		X: WINDOW_SIZE_X/2 - BORDER_SIZE/2 + BORDER_SPACING,
 		Y: LIMIT_TOP_Y,
 	}
 
 	lineEnd = rl.Vector2{
-		X: WINDOW_SIZE_X/2 - FRAME_BORDER_SIZE/2 + FRAME_SPACING,
+		X: WINDOW_SIZE_X/2 - BORDER_SIZE/2 + BORDER_SPACING,
 		Y: LIMIT_BOTTOM_Y + PADDLE_HEIGHT,
 	}
 
@@ -51,14 +51,14 @@ func main() {
 
 		rl.ClearBackground(rl.Black)
 
-		rl.DrawRectangleLinesEx(frame, FRAME_BORDER_SIZE, veryDarkGray)
+		rl.DrawRectangleLinesEx(border, BORDER_SIZE, veryDarkGray)
 
 		if gameStarted {
 			movePaddle()
 
 			rl.DrawRectangleRec(rl.Rectangle(leftPaddle), rl.LightGray)
 			rl.DrawRectangleRec(rl.Rectangle(rightPaddle), rl.LightGray)
-			rl.DrawLineEx(lineStart, lineEnd, FRAME_BORDER_SIZE, veryDarkGray)
+			rl.DrawLineEx(lineStart, lineEnd, BORDER_SIZE, veryDarkGray)
 			rl.DrawRectangleRec(ball, rl.LightGray)
 
 		} else if rl.IsKeyPressed(rl.KeyEnter) {
