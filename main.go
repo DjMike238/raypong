@@ -31,6 +31,7 @@ func main() {
 
 		if gameStarted {
 			movePaddle()
+			rl.DrawRectangleRec(rl.Rectangle(ball), rl.LightGray)
 		} else if rl.IsKeyPressed(rl.KeyEnter) {
 			gameStarted = true
 		} else {
