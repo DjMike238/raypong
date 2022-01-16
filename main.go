@@ -3,8 +3,8 @@ package main
 import rl "github.com/gen2brain/raylib-go/raylib"
 
 const (
-	WINDOW_X = 800
-	WINDOW_Y = 450
+	WINDOW_SIZE_X = 800
+	WINDOW_SIZE_Y = 450
 
 	WELCOME_TEXT = " Welcome to RayPong!\nPress ENTER to begin."
 	FONT_SIZE    = 20
@@ -15,7 +15,7 @@ var (
 )
 
 func main() {
-	rl.InitWindow(WINDOW_X, WINDOW_Y, "RayPong by Dj_Mike238")
+	rl.InitWindow(WINDOW_SIZE_X, WINDOW_SIZE_Y, "RayPong by Dj_Mike238")
 
 	rl.SetTargetFPS(60)
 
