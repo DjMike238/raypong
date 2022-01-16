@@ -6,6 +6,11 @@ const (
 	LIMIT_TOP_Y    = 20
 	LIMIT_BOTTOM_Y = 366
 
+	CENTER_Y = 192
+
+	PADDLE_WIDTH  = 8
+	PADDLE_HEIGHT = 64
+
 	MOVEMENT_SPEED = 4
 )
 
@@ -21,16 +26,16 @@ var (
 
 	leftPaddle = Paddle{
 		X:      20,
-		Y:      20,
-		Width:  8,
-		Height: 64,
+		Y:      CENTER_Y,
+		Width:  PADDLE_WIDTH,
+		Height: PADDLE_HEIGHT,
 	}
 
 	rightPaddle = Paddle{
 		X:      772,
-		Y:      20,
-		Width:  8,
-		Height: 64,
+		Y:      CENTER_Y,
+		Width:  PADDLE_WIDTH,
+		Height: PADDLE_HEIGHT,
 	}
 )
 
