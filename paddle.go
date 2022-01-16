@@ -17,13 +17,6 @@ const (
 type Paddle rl.Rectangle
 
 var (
-	frame = rl.Rectangle{
-		X:      4,
-		Y:      4,
-		Width:  792,
-		Height: 442,
-	}
-
 	leftPaddle = Paddle{
 		X:      20,
 		Y:      CENTER_Y,

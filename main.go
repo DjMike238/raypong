@@ -11,6 +11,13 @@ const (
 )
 
 var (
+	frame = rl.Rectangle{
+		X:      4,
+		Y:      4,
+		Width:  792,
+		Height: 442,
+	}
+
 	gameStarted bool
 )
 
