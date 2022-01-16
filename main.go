@@ -20,6 +20,23 @@ var (
 		Width:  WINDOW_SIZE_X - FRAME_SPACING*2,
 		Height: WINDOW_SIZE_Y - FRAME_SPACING*2,
 	}
+
+	lineStart = rl.Vector2{
+		X: WINDOW_SIZE_X/2 - FRAME_BORDER_SIZE/2 + FRAME_SPACING,
+		Y: LIMIT_TOP_Y,
+	}
+
+	lineEnd = rl.Vector2{
+		X: WINDOW_SIZE_X/2 - FRAME_BORDER_SIZE/2 + FRAME_SPACING,
+		Y: LIMIT_BOTTOM_Y + PADDLE_HEIGHT,
+	}
+
+	veryDarkGray = rl.Color{
+		R: 20,
+		G: 20,
+		B: 20,
+		A: 255,
+	}
 )
 
 func main() {
@@ -41,6 +58,7 @@ func main() {
 
 			rl.DrawRectangleRec(rl.Rectangle(leftPaddle), rl.LightGray)
 			rl.DrawRectangleRec(rl.Rectangle(rightPaddle), rl.LightGray)
+			rl.DrawLineEx(lineStart, lineEnd, FRAME_BORDER_SIZE, veryDarkGray)
 			rl.DrawRectangleRec(ball, rl.LightGray)
 
 		} else if rl.IsKeyPressed(rl.KeyEnter) {
