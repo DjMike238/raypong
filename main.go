@@ -24,12 +24,16 @@ func main() {
 
 		rl.EndDrawing()
 
-		if rl.IsKeyDown(rl.KeyDown) {
-			leftPaddle.move(MOVEMENT_SPEED)
-		} else if rl.IsKeyDown(rl.KeyUp) {
-			leftPaddle.move(-MOVEMENT_SPEED)
-		}
+		movePaddle()
 	}
 
 	rl.CloseWindow()
+}
+
+func movePaddle() {
+	if rl.IsKeyDown(rl.KeyDown) {
+		leftPaddle.move(MOVEMENT_SPEED)
+	} else if rl.IsKeyDown(rl.KeyUp) {
+		leftPaddle.move(-MOVEMENT_SPEED)
+	}
 }
