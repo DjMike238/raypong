@@ -8,14 +8,17 @@ const (
 
 	WELCOME_TEXT = " Welcome to RayPong!\nPress ENTER to begin."
 	FONT_SIZE    = 20
+
+	FRAME_BORDER_SIZE = 8
+	FRAME_SPACING     = 4
 )
 
 var (
 	frame = rl.Rectangle{
-		X:      4,
-		Y:      4,
-		Width:  792,
-		Height: 442,
+		X:      FRAME_SPACING,
+		Y:      FRAME_SPACING,
+		Width:  WINDOW_SIZE_X - FRAME_SPACING*2,
+		Height: WINDOW_SIZE_Y - FRAME_SPACING*2,
 	}
 
 	gameStarted bool
@@ -31,7 +34,7 @@ func main() {
 
 		rl.ClearBackground(rl.Black)
 
-		rl.DrawRectangleLinesEx(frame, 8, rl.LightGray)
+		rl.DrawRectangleLinesEx(frame, FRAME_BORDER_SIZE, rl.LightGray)
 
 		if gameStarted {
 			movePaddle()
