@@ -5,6 +5,9 @@ import rl "github.com/gen2brain/raylib-go/raylib"
 const (
 	WINDOW_X = 800
 	WINDOW_Y = 450
+
+	WELCOME_TEXT = " Welcome to RayPong!\nPress ENTER to begin."
+	FONT_SIZE    = 20
 )
 
 func main() {
@@ -20,8 +23,6 @@ func main() {
 		rl.DrawRectangleLinesEx(frame, 8, rl.LightGray)
 		rl.DrawRectangleRec(rl.Rectangle(leftPaddle), rl.LightGray)
 		rl.DrawRectangleRec(rl.Rectangle(rightPaddle), rl.LightGray)
-		rl.DrawText("Congrats! You created your first window!", 190, 200, 20, rl.LightGray)
-
 		rl.EndDrawing()
 
 		movePaddle()
@@ -36,4 +37,9 @@ func movePaddle() {
 	} else if rl.IsKeyDown(rl.KeyUp) {
 		leftPaddle.move(-MOVEMENT_SPEED)
 	}
+}
+
+func drawText() {
+	x := rl.MeasureText(WELCOME_TEXT, FONT_SIZE)
+	rl.DrawText(WELCOME_TEXT, x, 200, FONT_SIZE, rl.LightGray)
 }
