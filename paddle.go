@@ -18,14 +18,14 @@ type Paddle rl.Rectangle
 
 var (
 	leftPaddle = Paddle{
-		X:      20,
+		X:      FRAME_BORDER_SIZE*2 + FRAME_SPACING,
 		Y:      CENTER_Y,
 		Width:  PADDLE_WIDTH,
 		Height: PADDLE_HEIGHT,
 	}
 
 	rightPaddle = Paddle{
-		X:      772,
+		X:      WINDOW_SIZE_X - FRAME_BORDER_SIZE*2 - FRAME_SPACING - PADDLE_WIDTH,
 		Y:      CENTER_Y,
 		Width:  PADDLE_WIDTH,
 		Height: PADDLE_HEIGHT,
