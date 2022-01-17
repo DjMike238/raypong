@@ -1,6 +1,10 @@
 package main
 
-import rl "github.com/gen2brain/raylib-go/raylib"
+import (
+	"fmt"
+
+	rl "github.com/gen2brain/raylib-go/raylib"
+)
 
 const (
 	WINDOW_SIZE_X = 800
@@ -9,11 +13,16 @@ const (
 	WELCOME_TEXT      = " Welcome to RayPong!\nPress ENTER to begin."
 	WELCOME_FONT_SIZE = 20
 
+	SCORE_FONT_SIZE = 50
+	SCORE_SPACING   = 16
+
 	BORDER_SIZE    = 8
 	BORDER_SPACING = 4
 )
 
 var (
+	playerPoints, cpuPoints int
+
 	border = rl.Rectangle{
 		X:      BORDER_SPACING,
 		Y:      BORDER_SPACING,
@@ -61,6 +70,8 @@ func main() {
 			rl.DrawLineEx(lineStart, lineEnd, BORDER_SIZE, veryDarkGray)
 			rl.DrawRectangleRec(ball, rl.LightGray)
 
+			drawScore()
+
 		} else if rl.IsKeyPressed(rl.KeyEnter) {
 			gameStarted = true
 
@@ -72,6 +83,19 @@ func main() {
 	}
 
 	rl.CloseWindow()
+}
+
+func drawScore() {
+	player := fmt.Sprint(playerPoints)
+	cpu := fmt.Sprint(cpuPoints)
+
+	drawPoints(player, -rl.MeasureText(player, SCORE_FONT_SIZE)-SCORE_SPACING)
+	drawPoints(cpu, -rl.MeasureText(cpu, SCORE_FONT_SIZE)+SCORE_SPACING*2+BORDER_SIZE+1)
+}
+
+func drawPoints(score string, offset int32) {
+	X := int32(lineStart.X) + offset
+	rl.DrawText(score, X, LIMIT_TOP_Y, SCORE_FONT_SIZE, rl.LightGray)
 }
 
 func drawWelcomeText() {
