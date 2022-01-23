@@ -36,3 +36,7 @@ func (p *Paddle) move(delta float32) {
 		p.Y = newY
 	}
 }
+
+func (p *Paddle) collidesWith(ball Ball) bool {
+	return rl.CheckCollisionRecs(rl.Rectangle(*p), ball.rect)
+}
