@@ -12,6 +12,7 @@ const (
 
 	WELCOME_TEXT      = " Welcome to RayPong!\nPress ENTER to begin."
 	WELCOME_FONT_SIZE = 20
+	WELCOME_TEXT_Y    = PADDLE_CENTER_Y + WELCOME_FONT_SIZE*2
 
 	SCORE_FONT_SIZE = 50
 	SCORE_SPACING   = 16
@@ -100,7 +101,7 @@ func drawPoints(score string, offset int32) {
 
 func drawWelcomeText() {
 	x := WINDOW_SIZE_X/2 - rl.MeasureText(WELCOME_TEXT, WELCOME_FONT_SIZE)/2
-	rl.DrawText(WELCOME_TEXT, x, 200, WELCOME_FONT_SIZE, rl.LightGray)
+	rl.DrawText(WELCOME_TEXT, x, WELCOME_TEXT_Y, WELCOME_FONT_SIZE, rl.LightGray)
 }
 
 func movePaddle() {
