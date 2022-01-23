@@ -45,7 +45,7 @@ func (b *Ball) move() {
 		x := b.rect.X + deltaX
 		y := b.rect.Y + deltaY
 
-		if !xLimitOk(x) {
+		if !xLimitOk(x) || leftPaddle.collidesWith(*b) || rightPaddle.collidesWith(*b) {
 			deltaX *= -1
 		}
 
