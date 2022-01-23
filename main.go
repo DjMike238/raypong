@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -52,6 +54,8 @@ var (
 func main() {
 	var gameStarted bool
 
+	rand.Seed(time.Now().UnixMilli())
+
 	rl.InitWindow(WINDOW_SIZE_X, WINDOW_SIZE_Y, "RayPong by Dj_Mike238 - ESC to exit")
 
 	rl.SetTargetFPS(60)
@@ -69,9 +73,15 @@ func main() {
 			rl.DrawRectangleRec(rl.Rectangle(leftPaddle), rl.LightGray)
 			rl.DrawRectangleRec(rl.Rectangle(rightPaddle), rl.LightGray)
 			rl.DrawLineEx(lineStart, lineEnd, BORDER_SIZE, veryDarkGray)
-			rl.DrawRectangleRec(ball, rl.LightGray)
 
 			drawScore()
+
+			if !ball.moving {
+				ball.launch()
+				go moveBall()
+			}
+
+			rl.DrawRectangleRec(rl.Rectangle(ball.rect), rl.LightGray)
 
 		} else if rl.IsKeyPressed(rl.KeyEnter) {
 			gameStarted = true
@@ -110,4 +120,9 @@ func movePaddle() {
 	} else if rl.IsKeyDown(rl.KeyUp) || rl.IsKeyDown(rl.KeyW) {
 		leftPaddle.move(-MOVEMENT_SPEED)
 	}
+}
+
+func moveBall() {
+	time.Sleep(time.Second)
+	go ball.move()
 }
