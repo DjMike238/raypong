@@ -3,9 +3,6 @@ package main
 import rl "github.com/gen2brain/raylib-go/raylib"
 
 const (
-	LIMIT_TOP_Y    = BORDER_SIZE*2 + BORDER_SPACING
-	LIMIT_BOTTOM_Y = WINDOW_SIZE_Y - PADDLE_HEIGHT - LIMIT_TOP_Y
-
 	PADDLE_CENTER_Y = WINDOW_SIZE_Y/2 - PADDLE_HEIGHT/2
 
 	PADDLE_WIDTH  = 8
@@ -32,14 +29,10 @@ var (
 	}
 )
 
-func limitsOk(y float32) bool {
-	return y <= LIMIT_BOTTOM_Y && y >= LIMIT_TOP_Y
-}
-
 func (p *Paddle) move(delta float32) {
 	newY := p.Y + delta
 
-	if limitsOk(newY) {
+	if yLimitOk(newY) {
 		p.Y = newY
 	}
 }
