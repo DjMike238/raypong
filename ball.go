@@ -13,8 +13,9 @@ const (
 )
 
 type Ball struct {
-	rect   rl.Rectangle
+	color  rl.Color
 	moving bool
+	rect   rl.Rectangle
 }
 
 var (

@@ -77,11 +77,12 @@ func main() {
 			drawScore()
 
 			if !ball.moving {
+				ball.color = veryDarkGray
 				ball.launch()
 				go moveBall()
 			}
 
-			rl.DrawRectangleRec(rl.Rectangle(ball.rect), rl.LightGray)
+			rl.DrawRectangleRec(rl.Rectangle(ball.rect), ball.color)
 
 		} else if rl.IsKeyPressed(rl.KeyEnter) {
 			gameStarted = true
@@ -124,5 +125,6 @@ func movePaddle() {
 
 func moveBall() {
 	time.Sleep(time.Second)
+	ball.color = rl.LightGray
 	go ball.move()
 }
