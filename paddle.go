@@ -32,7 +32,7 @@ var (
 func (p *Paddle) move(delta float32) {
 	newY := p.Y + delta
 
-	if yLimitOk(newY) {
+	if paddleLimitOk(newY) {
 		p.Y = newY
 	}
 }
