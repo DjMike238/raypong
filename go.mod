@@ -1,4 +1,4 @@
-module pong
+module raypong
 
 go 1.17
 
