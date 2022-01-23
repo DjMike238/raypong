@@ -38,7 +38,7 @@ var (
 
 	lineEnd = rl.Vector2{
 		X: WINDOW_SIZE_X/2 - BORDER_SIZE/2 + BORDER_SPACING,
-		Y: LIMIT_BOTTOM_Y + PADDLE_HEIGHT,
+		Y: PADDLE_LIMIT_BOTTOM_Y + PADDLE_HEIGHT,
 	}
 
 	veryDarkGray = rl.Color{
