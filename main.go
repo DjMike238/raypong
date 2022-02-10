@@ -111,7 +111,7 @@ func drawScore() {
 
 func drawPoints(score string, offset int32) {
 	X := int32(lineStart.X) - rl.MeasureText(score, SCORE_FONT_SIZE) + offset
-	rl.DrawText(score, X, LIMIT_TOP_Y, SCORE_FONT_SIZE, rl.LightGray)
+	rl.DrawText(score, X, LIMIT_TOP_Y, SCORE_FONT_SIZE, veryDarkGray)
 }
 
 func drawWelcomeText() {
