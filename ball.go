@@ -12,10 +12,20 @@ const (
 	BALL_SPEED = 8
 )
 
+// Custom type for ball launch direction.
+type Direction uint8
+
+const (
+	Random Direction = iota
+	Left
+	Right
+)
+
 type Ball struct {
-	color  rl.Color
-	moving bool
-	rect   rl.Rectangle
+	color     rl.Color
+	moving    bool
+	rect      rl.Rectangle
+	direction Direction
 }
 
 var (
@@ -36,8 +46,8 @@ func (b *Ball) launch() {
 
 func (b *Ball) move() {
 	var (
-		deltaX = float32(1)
-		deltaY = float32(1)
+		deltaX = getDirection(b.direction)
+		deltaY = getDirection(b.direction)
 
 		ticker = time.NewTicker(BALL_SPEED * time.Millisecond)
 	)
@@ -64,4 +74,16 @@ func (b *Ball) move() {
 	}
 
 	b.moving = false
+}
+
+func getDirection(d Direction) float32 {
+	switch d {
+	case Left:
+		return -1
+	case Right:
+		return 1
+	}
+
+	d = Direction(rand.Intn(2) + 1)
+	return getDirection(d)
 }
