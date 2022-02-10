@@ -70,7 +70,7 @@ func main() {
 		rl.DrawRectangleLinesEx(border, BORDER_SIZE, veryDarkGray)
 
 		if gameStarted {
-			movePaddle()
+			go moveLeftPaddle()
 
 			rl.DrawRectangleRec(rl.Rectangle(leftPaddle), rl.LightGray)
 			rl.DrawRectangleRec(rl.Rectangle(rightPaddle), rl.LightGray)
@@ -113,11 +113,11 @@ func drawPoints(score string, offset int32) {
 }
 
 func drawWelcomeText() {
-	x := WINDOW_SIZE_X/2 - rl.MeasureText(WELCOME_TEXT, WELCOME_FONT_SIZE)/2
-	rl.DrawText(WELCOME_TEXT, x, WELCOME_TEXT_Y, WELCOME_FONT_SIZE, rl.LightGray)
+	X := WINDOW_SIZE_X/2 - rl.MeasureText(WELCOME_TEXT, WELCOME_FONT_SIZE)/2
+	rl.DrawText(WELCOME_TEXT, X, WELCOME_TEXT_Y, WELCOME_FONT_SIZE, rl.LightGray)
 }
 
-func movePaddle() {
+func moveLeftPaddle() {
 	if rl.IsKeyDown(rl.KeyDown) || rl.IsKeyDown(rl.KeyS) {
 		leftPaddle.move(MOVEMENT_SPEED)
 	} else if rl.IsKeyDown(rl.KeyUp) || rl.IsKeyDown(rl.KeyW) {
