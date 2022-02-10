@@ -78,12 +78,13 @@ func (b *Ball) move() {
 
 func getDirection(d Direction) float32 {
 	switch d {
+	case Random:
+		d = Direction(rand.Intn(2) + 1)
 	case Left:
 		return -1
 	case Right:
 		return 1
 	}
 
-	d = Direction(rand.Intn(2) + 1)
 	return getDirection(d)
 }
