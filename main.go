@@ -21,6 +21,8 @@ const (
 
 	BORDER_SIZE    = 8
 	BORDER_SPACING = 4
+
+	CENTER_LINE_X = WINDOW_SIZE_X/2 - BORDER_SIZE/2 + BORDER_SPACING
 )
 
 var (
@@ -34,12 +36,12 @@ var (
 	}
 
 	lineStart = rl.Vector2{
-		X: WINDOW_SIZE_X/2 - BORDER_SIZE/2 + BORDER_SPACING,
+		X: CENTER_LINE_X,
 		Y: LIMIT_TOP_Y,
 	}
 
 	lineEnd = rl.Vector2{
-		X: WINDOW_SIZE_X/2 - BORDER_SIZE/2 + BORDER_SPACING,
+		X: CENTER_LINE_X,
 		Y: PADDLE_LIMIT_BOTTOM_Y + PADDLE_HEIGHT,
 	}
 
