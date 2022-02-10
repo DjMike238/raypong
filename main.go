@@ -71,7 +71,7 @@ func main() {
 		rl.DrawRectangleLinesEx(border, BORDER_SIZE, veryDarkGray)
 
 		if gameStarted {
-			go moveLeftPaddle()
+			moveLeftPaddle()
 			moveRightPaddle()
 
 			rl.DrawRectangleRec(rl.Rectangle(leftPaddle), rl.LightGray)
