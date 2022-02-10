@@ -26,8 +26,8 @@ const (
 )
 
 var (
-	playerPoints, cpuPoints int
-	ballIsMoving            bool
+	playerPoints int
+	cpuPoints    int
 
 	border = rl.Rectangle{
 		X:      BORDER_SPACING,
@@ -128,7 +128,7 @@ func moveLeftPaddle() {
 }
 
 func moveRightPaddle() {
-	if ballIsMoving && ball.rect.X >= CENTER_LINE_X {
+	if ball.moving && ball.rect.X >= CENTER_LINE_X {
 		if ball.rect.Y > (rightPaddle.Y + PADDLE_HEIGHT) {
 			rightPaddle.move(MOVEMENT_SPEED / 2)
 		} else if ball.rect.Y < rightPaddle.Y {
@@ -141,5 +141,4 @@ func moveBall() {
 	time.Sleep(time.Second)
 	ball.color = rl.LightGray
 	go ball.move()
-	ballIsMoving = true
 }
