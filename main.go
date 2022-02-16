@@ -52,6 +52,20 @@ var (
 		B: 20,
 		A: 255,
 	}
+
+	leftPointRect = rl.Rectangle{
+		X:      LIMIT_LEFT_X - 1,
+		Y:      LIMIT_TOP_Y,
+		Width:  PADDLE_WIDTH,
+		Height: LIMIT_BOTTOM_Y - (BORDER_SIZE + BORDER_SPACING),
+	}
+
+	rightPointRect = rl.Rectangle{
+		X:      LIMIT_RIGHT_X + 1,
+		Y:      LIMIT_TOP_Y,
+		Width:  PADDLE_WIDTH,
+		Height: LIMIT_BOTTOM_Y - (BORDER_SIZE + BORDER_SPACING),
+	}
 )
 
 func main() {
@@ -71,6 +85,9 @@ func main() {
 		rl.DrawRectangleLinesEx(border, BORDER_SIZE, veryDarkGray)
 
 		if gameStarted {
+			rl.DrawRectangleRec(leftPointRect, rl.Black)
+			rl.DrawRectangleRec(rightPointRect, rl.Black)
+
 			moveLeftPaddle()
 			moveRightPaddle()
 
@@ -78,6 +95,7 @@ func main() {
 			rl.DrawRectangleRec(rl.Rectangle(rightPaddle), rl.LightGray)
 			rl.DrawLineEx(lineStart, lineEnd, BORDER_SIZE, veryDarkGray)
 
+			checkScore()
 			drawScore()
 
 			if !ball.moving {
@@ -99,6 +117,17 @@ func main() {
 	}
 
 	rl.CloseWindow()
+}
+
+func checkScore() {
+	if rl.CheckCollisionRecs(leftPointRect, ball.rect) {
+		ball.moving = false
+		cpuPoints += 1
+
+	} else if rl.CheckCollisionRecs(rightPointRect, ball.rect) {
+		ball.moving = false
+		playerPoints += 1
+	}
 }
 
 func drawScore() {
