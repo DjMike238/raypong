@@ -95,12 +95,13 @@ func main() {
 			rl.DrawRectangleRec(rl.Rectangle(rightPaddle), rl.LightGray)
 			rl.DrawLineEx(lineStart, lineEnd, BORDER_SIZE, veryDarkGray)
 
-			checkScore()
-			drawScore()
-
 			if !ball.moving {
 				go ball.launch()
+			} else {
+				checkScore()
 			}
+
+			drawScore()
 
 			rl.DrawRectangleRec(rl.Rectangle(ball.rect), ball.color)
 
