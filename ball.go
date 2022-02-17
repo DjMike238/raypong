@@ -26,6 +26,7 @@ type Ball struct {
 	moving    bool
 	rect      rl.Rectangle
 	direction Direction
+	stop      chan bool
 }
 
 var (
@@ -48,32 +49,36 @@ func (b *Ball) move() {
 	var (
 		deltaX = getDirection(b.direction)
 		deltaY = getDirection(b.direction)
-
-		ticker = time.NewTicker(BALL_SPEED * time.Millisecond)
 	)
 
-	for range ticker.C {
-		x := b.rect.X + deltaX
-		y := b.rect.Y + deltaY
+	b.stop = make(chan bool, 1)
 
-		if !xLimitOk(x) || leftPaddle.collidesWith(*b) || rightPaddle.collidesWith(*b) {
-			deltaX *= -1
-		}
+	for {
+		select {
+		case <-b.stop:
+			close(b.stop)
+			b.moving = false
+			return
 
-		b.rect.X += deltaX
+		default:
+			x := b.rect.X + deltaX
+			y := b.rect.Y + deltaY
 
-		if !yLimitOk(y) {
-			deltaY *= -1
-		}
+			if !xLimitOk(x) || leftPaddle.collidesWith(*b) || rightPaddle.collidesWith(*b) {
+				deltaX *= -1
+			}
 
-		b.rect.Y += deltaY
+			b.rect.X += deltaX
 
-		if !b.moving {
-			ticker.Stop()
+			if !yLimitOk(y) {
+				deltaY *= -1
+			}
+
+			b.rect.Y += deltaY
+
+			time.Sleep(BALL_SPEED * time.Millisecond)
 		}
 	}
-
-	b.moving = false
 }
 
 func getDirection(d Direction) float32 {

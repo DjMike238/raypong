@@ -121,11 +121,11 @@ func main() {
 
 func checkScore() {
 	if rl.CheckCollisionRecs(leftPointRect, ball.rect) {
-		ball.moving = false
+		ball.stop <- true
 		cpuPoints += 1
 
 	} else if rl.CheckCollisionRecs(rightPointRect, ball.rect) {
-		ball.moving = false
+		ball.stop <- true
 		playerPoints += 1
 	}
 }
