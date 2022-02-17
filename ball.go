@@ -39,42 +39,51 @@ var (
 )
 
 func (b *Ball) launch() {
+	// Randomize Y position.
 	pos := rand.Intn(LIMIT_BOTTOM_Y-LIMIT_TOP_Y) + LIMIT_TOP_Y
+
+	// Reset ball and get ready to launch.
+	ball.color = veryDarkGray
 	b.rect.X = WINDOW_SIZE_X/2 - PADDLE_WIDTH/2
 	b.rect.Y = float32(pos)
+
+	// Launch the ball after one second.
 	b.moving = true
+	time.Sleep(time.Second)
+	ball.color = rl.LightGray
+	move()
 }
 
-func (b *Ball) move() {
+func move() {
 	var (
-		deltaX = getDirection(b.direction)
-		deltaY = getDirection(b.direction)
+		deltaX = getDirection(ball.direction)
+		deltaY = getDirection(ball.direction)
 	)
 
-	b.stop = make(chan bool, 1)
+	ball.stop = make(chan bool, 1)
 
 	for {
 		select {
-		case <-b.stop:
-			close(b.stop)
-			b.moving = false
+		case <-ball.stop:
+			close(ball.stop)
+			ball.moving = false
 			return
 
 		default:
-			x := b.rect.X + deltaX
-			y := b.rect.Y + deltaY
+			x := ball.rect.X + deltaX
+			y := ball.rect.Y + deltaY
 
-			if !xLimitOk(x) || leftPaddle.collidesWith(*b) || rightPaddle.collidesWith(*b) {
+			if !xLimitOk(x) || leftPaddle.collidesWith(ball) || rightPaddle.collidesWith(ball) {
 				deltaX *= -1
 			}
 
-			b.rect.X += deltaX
+			ball.rect.X += deltaX
 
 			if !yLimitOk(y) {
 				deltaY *= -1
 			}
 
-			b.rect.Y += deltaY
+			ball.rect.Y += deltaY
 
 			time.Sleep(BALL_SPEED * time.Millisecond)
 		}

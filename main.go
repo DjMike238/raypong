@@ -99,9 +99,7 @@ func main() {
 			drawScore()
 
 			if !ball.moving {
-				ball.color = veryDarkGray
-				ball.launch()
-				go moveBall()
+				go ball.launch()
 			}
 
 			rl.DrawRectangleRec(rl.Rectangle(ball.rect), ball.color)
@@ -164,10 +162,4 @@ func moveRightPaddle() {
 			rightPaddle.move(-MOVEMENT_SPEED / 2)
 		}
 	}
-}
-
-func moveBall() {
-	time.Sleep(time.Second)
-	ball.color = rl.LightGray
-	go ball.move()
 }
