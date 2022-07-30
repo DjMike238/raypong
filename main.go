@@ -133,13 +133,20 @@ func drawScore() {
 	player := fmt.Sprint(playerPoints)
 	cpu := fmt.Sprint(cpuPoints)
 
-	drawPoints(player, -SCORE_SPACING)
-	drawPoints(cpu, SCORE_SPACING*2+BORDER_SIZE+1)
+	drawPoints(player, true)
+	drawPoints(cpu, false)
 }
 
-func drawPoints(score string, offset int32) {
-	X := int32(lineStart.X) - rl.MeasureText(score, SCORE_FONT_SIZE) + offset
-	rl.DrawText(score, X, LIMIT_TOP_Y, SCORE_FONT_SIZE, veryDarkGray)
+func drawPoints(score string, isPlayer bool) {
+	posX := int32(lineStart.X)
+
+	if isPlayer {
+		posX -= rl.MeasureText(score, SCORE_FONT_SIZE) + SCORE_SPACING
+	} else {
+		posX += SCORE_SPACING
+	}
+
+	rl.DrawText(score, posX, LIMIT_TOP_Y, SCORE_FONT_SIZE, veryDarkGray)
 }
 
 func drawWelcomeText() {
